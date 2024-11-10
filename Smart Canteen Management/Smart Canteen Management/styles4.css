@@ -1,0 +1,85 @@
+.order-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 600px;
+}
+
+.order-section h2 {
+    margin-bottom: 20px;
+}
+
+.order-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-section label {
+    font-weight: bold;
+}
+
+.order-section input, .order-section select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.order-section button {
+    padding: 15px;
+    border: none;
+    background-color: #ff7e5f;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.order-section button:hover {
+    background-color: #feb47b;
+}
+/* Navigation Bar Styles */
+header {
+    background-color: #ff5722; /* Background color of the header */
+    padding: 20px 0; /* Padding for header */
+}
+
+nav {
+    text-align: center; /* Center align the navigation links */
+}
+
+nav ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+nav ul li {
+    display: inline; /* Display items in a line */
+    margin: 0 15px; /* Margin between items */
+}
+
+nav ul li a {
+    text-decoration: none; /* Remove underline from links */
+    color: white; /* Link color */
+    font-weight: bold; /* Bold text for links */
+    padding: 10px 15px; /* Padding around links */
+    transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+    border-radius: 5px; /* Rounded corners */
+}
+
+nav ul li a:hover {
+    background-color: #ffffff; /* Background color on hover */
+    color: #ff5722; /* Text color on hover */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block; /* Stack items vertically on small screens */
+        margin: 10px 0; /* Margin between stacked items */
+    }
+}

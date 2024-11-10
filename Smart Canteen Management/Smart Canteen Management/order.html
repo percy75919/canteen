@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Order - Smart Canteen Management System</title>
+    <link rel="stylesheet" href="order.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Basic styles for the payment details section */
+        #payment-details {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+       
+        #cash-details {
+            display: none; /* Initially hidden */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart Canteen Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order</a></li>
+                <li><a href="Aboutus.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i> LogOut</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="order-summary">
+        <div id="item-count">Item Count: 0</div> 
+        <div id="order-list"></div>
+        <div id="total-cost">Total Cost: $0.00</div>
+
+        <div id="payment-method">
+            <label for="payment-options">Select Payment Method:</label>
+            <select id="payment-options" onchange="showPaymentDetails()">
+                <option value="select">Select</option>
+                <option value="credit-card">Credit Card</option>
+                <option value="debit-card">Debit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="cash">Cash</option>
+            </select>
+        </div>
+        <br><br>
+
+        <div id="payment-details">
+            <h3>Enter Payment Details:</h3>
+            <div id="credit-card-details" class="payment-detail">
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX">
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" placeholder="MM/YY">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" placeholder="XXX">
+            </div>
+            <div id="paypal-details" class="payment-detail" style="display: none;">
+                <label for="paypal-email">PayPal Email:</label>
+                <input type="email" id="paypal-email" placeholder="your-email@example.com">
+            </div>
+            <div id="cash-details" class="payment-detail">
+                <p>Please bring a total of: <strong id="cash-total"></strong></p>
+            </div>
+        </div>
+        
+        <button id="confirm-order">Confirm Order</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Smart Canteen Management System | All Rights Reserved</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="feedbackModal" style="display: none;">
+        <div class="feedback-container">
+            <h2>Feedback</h2>
+            <form id="feedbackForm">
+                <label for="rating">Rate your experience:</label>
+                <div class="rating">
+                    <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+                    <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                    <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                    <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                    <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+                </div>
+                <label for="comments">Comments:</label>
+                <textarea id="comments" name="comments" rows="4" placeholder="Share your thoughts..."></textarea>
+                <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Function to update order summary from local storage
+        function updateOrderSummary() {
+            const orderItems = JSON.parse(localStorage.getItem('orderItems')) || [];
+            const orderList = document.getElementById('order-list');
+            const itemCount = document.getElementById('item-count');
+            const totalCost = document.getElementById('total-cost');
+
+            orderList.innerHTML = ""; // Clear previous order items
+            let total = 0;
+
+            orderItems.forEach(item => {
+                const listItem = document.createElement('div');
+                listItem.textContent = `${item.name}: $${item.price.toFixed(2)}`;
+                orderList.appendChild(listItem);
+                total += item.price;
+            });
+
+            itemCount.textContent = `Item Count: ${orderItems.length}`;
+            totalCost.textContent = `Total Cost: $${total.toFixed(2)}`;
+            return total; // Return total cost for use
+        }
+
+        function submitFeedback() {
+            const rating = document.querySelector('input[name="rating"]:checked')?.value;
+            const comments = document.getElementById('comments').value;
+
+            if (rating && comments) {
+                console.log("Rating:", rating);
+                console.log("Comments:", comments);
+                
+                document.getElementById('feedbackModal').style.display = 'none';
+                alert("Thank you for your feedback!");
+            } else {
+                alert("Please provide both a rating and comments.");
+            }
+        }
+
+        function showPaymentDetails() {
+            const paymentMethod = document.getElementById('payment-options').value;
+            const paymentDetails = document.getElementById('payment-details');
+            const cashTotal = document.getElementById('cash-total');
+            const totalAmount = updateOrderSummary(); // Get the total amount
+
+            paymentDetails.style.display = 'block';
+            document.querySelectorAll('.payment-detail').forEach(detail => {
+                detail.style.display = 'none';
+            });
+
+            if (paymentMethod === 'credit-card' || paymentMethod === 'debit-card') {
+                document.getElementById('credit-card-details').style.display = 'block';
+            } else if (paymentMethod === 'paypal') {
+                document.getElementById('paypal-details').style.display = 'block';
+            } else if (paymentMethod === 'cash') {
+                document.getElementById('cash-details').style.display = 'block';
+                cashTotal.textContent = `$${totalAmount.toFixed(2)}`; // Display total amount for cash
+            }
+        }
+
+        document.getElementById('confirm-order').addEventListener('click', function() {
+            const paymentMethod = document.getElementById('payment-options').value;
+            const cardNumber = document.getElementById('card-number').value;
+            const expiryDate = document.getElementById('expiry-date').value;
+            const cvv = document.getElementById('cvv').value;
+            const paypalEmail = document.getElementById('paypal-email').value;
+
+            if (paymentMethod === 'credit-card' || paymentMethod === 'debit-card') {
+                if (!cardNumber || !expiryDate || !cvv) {
+                    alert("Please enter all payment details before confirming your order.");
+                    return;
+                }
+            } else if (paymentMethod === 'paypal') {
+                if (!paypalEmail) {
+                    alert("Please enter your PayPal email before confirming your order.");
+                    return;
+                }
+            }
+
+            // Optionally, you can clear the order after confirmation
+            localStorage.removeItem('orderItems');
+
+            alert("Your order has been confirmed!");
+            document.getElementById('feedbackModal').style.display = 'block';
+            updateOrderSummary(); // Update order summary after clearing
+        });
+
+        // Initialize order summary on page load
+        updateOrderSummary();
+    </script>
+</body>
+</html>
+

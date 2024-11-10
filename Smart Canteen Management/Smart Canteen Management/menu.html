@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Smart Canteen Management System</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Smart Canteen Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order</a></li>
+                <li><a href="Aboutus.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <!-- <li><a href="login.html"><i class="fas fa-user"></i> Login</a></li> -->
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="menu">
+            <h2>Our Menu</h2>
+
+            <div class="search-bar">Search:
+                <input type="text" id="searchInput" placeholder="Search for items...">
+           </div>
+            
+            <div class="menu-container">
+                <div class="menu-item" data-name="Cheeseburger" data-price="8.99">
+                    <h3>Cheeseburger</h3>
+                    <p>Juicy beef patty topped with cheese, lettuce, and tomatoes.</p>
+                    <span class="price">$8.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="cheeseburger.jpeg" alt="Cheeseburger" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Caesar Salad" data-price="7.49">
+                    <h3>Caesar Salad</h3>
+                    <p>Crisp romaine lettuce, croutons, and Caesar dressing.</p>
+                    <span class="price">$7.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="caesar-salad.jpg" alt="Caesar Salad" class="menu-image" height="200px">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Pasta Primavera" data-price="10.99" >
+                    <h3>Pasta Primavera</h3>
+                    <p>Pasta with fresh vegetables and a light garlic sauce.</p>
+                    <span class="price">$10.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="pasta-primavera.jpg" alt="Pasta Primavera" class="menu-image" height="200px">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Margherita Pizza" data-price="11.49">
+                    <h3>Margherita Pizza</h3>
+                    <p>Classic pizza topped with mozzarella and fresh basil.</p>
+                    <span class="price">$11.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="margherita-pizza.jpeg" alt="Margherita Pizza" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Chocolate Cake" data-price="5.99">
+                    <h3>Chocolate Cake</h3>
+                    <p>Rich chocolate cake served with vanilla ice cream.</p>
+                    <span class="price">$5.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="chocolate-cake.jpeg" alt="Chocolate Cake" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Fried Rice" data-price="9.99">
+                    <h3>Fried Rice</h3>
+                    <p>Stir-fried rice with vegetables and soy sauce.</p>
+                    <span class="price">$9.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="fried-rice.jpeg" alt="Fried Rice" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Grilled Chicken" data-price="12.49">
+                    <h3>Grilled Chicken</h3>
+                    <p>Seasoned grilled chicken served with vegetables.</p>
+                    <span class="price">$12.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="grilled-chicken.jpeg" alt="Grilled Chicken" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Vegetable Stir Fry" data-price="8.99">
+                    <h3>Vegetable Stir Fry</h3>
+                    <p>A mix of seasonal vegetables stir-fried to perfection.</p>
+                    <span class="price">$8.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="vegetable-stir-fry.jpeg" alt="Vegetable Stir Fry" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Beef Tacos" data-price="10.49">
+                    <h3>Beef Tacos</h3>
+                    <p>Soft tortillas filled with seasoned beef and toppings.</p>
+                    <span class="price">$10.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="beef-tacos.jpg" alt="Beef Tacos" class="menu-image" height="200px">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Spaghetti Bolognese" data-price="11.99">
+                    <h3>Spaghetti Bolognese</h3>
+                    <p>Classic Italian dish with rich meat sauce.</p>
+                    <span class="price">$11.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="spaghetti-bolognese.jpg" alt="Spaghetti Bolognese" class="menu-image" height="200px">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Shrimp Fried Noodles" data-price="12.99">
+                    <h3>Shrimp Fried Noodles</h3>
+                    <p>Noodles stir-fried with shrimp and vegetables.</p>
+                    <span class="price">$12.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="shrimp-fried-noodles.jpeg" alt="Shrimp Fried Noodles" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Quiche Lorraine" data-price="9.49">
+                    <h3>Quiche Lorraine</h3>
+                    <p>A savory pie filled with cheese and bacon.</p>
+                    <span class="price">$9.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="quiche-lorraine.jpeg" alt="Quiche Lorraine" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Fish and Chips" data-price="11.49">
+                    <h3>Fish and Chips</h3>
+                    <p>Crispy battered fish served with fries.</p>
+                    <span class="price">$11.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="Fish_and_chips.jpg" alt="Fish and Chips" class="menu-image" height="200px">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Mushroom Risotto" data-price="10.99">
+                    <h3>Mushroom Risotto</h3>
+                    <p>Creamy risotto with fresh mushrooms and herbs.</p>
+                    <span class="price">$10.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="mushroom-risotto.jpeg" alt="Mushroom Risotto" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Caprese Salad" data-price="7.99">
+                    <h3>Caprese Salad</h3>
+                    <p>Fresh mozzarella, tomatoes, and basil drizzled with balsamic.</p>
+                    <span class="price">$7.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="Caprese Salad.jpeg" alt="Caprese Salad" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="BBQ Chicken Pizza" data-price="12.49">
+                    <h3>BBQ Chicken Pizza</h3>
+                    <p>Grilled chicken, BBQ sauce, and mozzarella on a pizza.</p>
+                    <span class="price">$12.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="bbq-chicken-pizza.jpg" alt="BBQ Chicken Pizza" class="menu-image" height="250px">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Eggplant Parmesan" data-price="10.99">
+                    <h3>Eggplant Parmesan</h3>
+                    <p>Breaded eggplant topped with marinara sauce and cheese.</p>
+                    <span class="price">$10.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="eggplant-parmesan.jpg" alt="Eggplant Parmesan" class="menu-image" height="250px">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Greek Salad" data-price="8.49">
+                    <h3>Greek Salad</h3>
+                    <p>Mixed greens, feta, olives, and a lemon-olive oil dressing.</p>
+                    <span class="price">$8.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="greek-salad.jpeg" alt="Greek Salad" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Pancakes" data-price="6.99">
+                    <h3>Pancakes</h3>
+                    <p>Fluffy pancakes served with maple syrup.</p>
+                    <span class="price">$6.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="pancakes.jpg" alt="Pancakes" class="menu-image" height="250px">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Apple Pie" data-price="4.99">
+                    <h3>Apple Pie</h3>
+                    <p>Classic apple pie served warm with ice cream.</p>
+                    <span class="price">$4.99</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="apple-pie.jpeg" alt="Apple Pie" class="menu-image">
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-item" data-name="Berry Smoothie" data-price="5.49">
+                    <h3>Berry Smoothie</h3>
+                    <p>Fresh berries blended with yogurt and honey.</p>
+                    <span class="price">$5.49</span>
+                    <button class="add-to-order">Add to Order</button>
+                </div>
+                <img src="berry-smoothie.jpeg" alt="Berry Smoothie" class="menu-image">
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Smart Canteen Management System | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

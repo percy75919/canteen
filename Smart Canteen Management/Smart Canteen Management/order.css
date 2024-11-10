@@ -1,0 +1,206 @@
+html, body {
+    height: 100%; /* Ensure the body takes the full height */
+    display: flex;
+    flex-direction: column; /* Stack header, main content, and footer */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    background-image: url('https://t3.ftcdn.net/jpg/06/63/53/62/360_F_663536268_zxtniBUfI2CH8KvXYl7gYfwXXECB8BZK.jpg'); /* Add your background image here */
+    background-size: cover; /* Ensure the background covers the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+header {
+    background-color: rgba(255, 126, 95, 1.0); /* Added transparency for better visibility */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+#order-summary {
+    max-width: 800px; /* Increased max width */
+    margin: 20px auto; /* Centering the box */
+    padding: 30px; /* Increased padding for more space */
+    background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency for contrast */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; /* Center text within the box */
+}
+
+#item-count, #total-cost {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+footer {
+    margin-top: auto; /* Push the footer to the bottom */
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.social-icons {
+    margin-top: 10px; /* Space between text and icons */
+}
+
+.social-icons a {
+    color: white;
+    margin: 0 10px; /* Space between icons */
+    font-size: 20px; /* Icon size */
+}
+
+.social-icons a:hover {
+    color: #3498db; /* Change color on hover */
+}
+
+/* Feedback */
+#feedbackModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: none; /* Hidden by default, shown when needed */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.feedback-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.feedback-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Star Rating */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.rating label {
+    font-size: 24px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input[type="radio"]:checked ~ label {
+    color: #FFD700; /* Gold color for stars */
+}
+
+/* Textarea for Comments */
+.feedback-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Submit Button */
+.feedback-container button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.feedback-container button:hover {
+    background-color: #45a049;
+}
+
+/* Style the radio buttons to look like stars */
+.rating {
+    display: flex;
+    direction: row-reverse;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    color: #ddd; /* Default color for unselected stars */
+}
+
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input[type="radio"]:checked ~ label {
+    color: #FFD700; /* Highlight color for selected and hovered stars */
+}
+
+/* Main content area, flex-grow makes it take up remaining space */
+main {
+    flex-grow: 1;
+}

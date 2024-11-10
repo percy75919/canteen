@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Header styles */
+        header {
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+            align-items: center; /* Center align items */
+            padding: 10px 20px;
+            background-color: #ff7e5f;
+            border-bottom: 1px solid #ccc;
+        }
+        .header-title {
+            text-align: center; /* Center the heading */
+            margin: 0; /* Remove default margin */
+        }
+        nav {
+            width: 100%; /* Ensure nav takes full width */
+            display: flex; /* Use flex for navigation */
+            justify-content: center; /* Center navigation links */
+            margin-top: 10px; /* Add margin for spacing */
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            gap: 15px; /* Space between links */
+        }
+        /* Login button styles */
+        .login-dropdown {
+            position: relative;
+            display: inline-block;
+            margin-top: -30px;
+            margin-left: auto; /* Push button to the right */
+        }
+        .login-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center; /* Center icon and text */
+        }
+        .login-button i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #ff7e5f;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .login-dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ff7e5f;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="header-title">Smart Canteen Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order</a></li>
+                <li><a href="Aboutus.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+        <div class="login-dropdown">
+            <button class="login-button">
+                <i class="fas fa-user"></i> Login
+            </button>
+            <div class="dropdown-content">
+                <a href="login.html">User</a>
+                <a href="#" id="admin-login">Admin</a> 
+            </div>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <h2>Log In</h2>
+        <form id="login-form" action="/submit-login" method="POST">
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Log In</button>
+            <p class="signup-link">Don't have an account? <a href="signup.html">Create Account</a></p>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Smart Canteen Management System | All Rights Reserved</p>
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            window.location.href = 'home.html'; // Redirect to the home page
+        });
+
+        document.getElementById('admin-login').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default action
+            const password = prompt("Please enter the admin password:");
+            if (password === "admin123") { // Change to your actual admin password
+                window.location.href = 'admin.html'; // Redirect to admin page
+            } else {
+                alert("Incorrect password!"); // Alert for incorrect password
+            }
+        });
+    </script>
+</body>
+</html>

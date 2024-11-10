@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f3f4f6;
+        }
+        .feedback-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #555;
+        }
+        .rating {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            font-size: 24px;
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.3s;
+        }
+        .rating input:checked ~ label {
+            color: #ffcc00;
+        }
+        .rating label:hover,
+        .rating label:hover ~ label,
+        .rating input:checked ~ label:hover,
+        .rating input:checked ~ label:hover ~ label {
+            color: #ffcc00;
+        }
+        .feedback-container textarea,
+        .feedback-container input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        .feedback-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .feedback-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .confirmation {
+            color: green;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="feedback-container">
+        <h2>Your Feedback</h2>
+        <form id="feedbackForm" onsubmit="submitFeedback(event)">
+            <label for="rating">Rate your experience:</label>
+            <div class="rating">
+                <input type="radio" name="rating" id="star5" value="5"><label for="star5">★</label>
+                <input type="radio" name="rating" id="star4" value="4"><label for="star4">★</label>
+                <input type="radio" name="rating" id="star3" value="3"><label for="star3">★</label>
+                <input type="radio" name="rating" id="star2" value="2"><label for="star2">★</label>
+                <input type="radio" name="rating" id="star1" value="1"><label for="star1">★</label>
+            </div>
+
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" placeholder="Share your thoughts..."></textarea>
+
+            <input type="submit" value="Submit Feedback">
+            <p class="confirmation" id="confirmationMessage">Thank you for your feedback!</p>
+        </form>
+    </div>
+
+    <script>
+        function submitFeedback(event) {
+            event.preventDefault(); // Prevent page reload
+            const form = document.getElementById('feedbackForm');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+
+            // Display confirmation message
+            confirmationMessage.style.display = 'block';
+
+            // Clear the form
+            form.reset();
+
+            // Hide the message after a few seconds
+            setTimeout(() => {
+                confirmationMessage.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

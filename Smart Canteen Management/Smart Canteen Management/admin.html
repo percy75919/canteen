@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Smart Canteen Management System</title>
+    <link rel="stylesheet" href="admin.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="menu.html"><i class="fas fa-utensils"></i> Menu</a></li>
+                <li><a href="order.html"><i class="fas fa-shopping-cart"></i> Order</a></li>
+                <li><a href="Aboutus.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="login.html"><i class="fas fa-user"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div id="order-management">
+        <h2>Manage Orders</h2>
+        <h3>Current Orders</h3>
+        <table id="current-orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Items</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="current-orders-body">
+                <!-- Current orders will be dynamically inserted here -->
+            </tbody>
+        </table>
+    
+        <h3>Old Orders</h3>
+        <table id="old-orders-table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Items</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="old-orders-body">
+                <!-- Old orders will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Smart Canteen Management System | All Rights Reserved</p>
+        </div>
+        <div class="footer-icons">
+            <i class="fas fa-phone-alt" title="Contact Us"></i>
+            <i class="fas fa-envelope" title="Email Us"></i>
+            <i class="fas fa-map-marker-alt" title="Location"></i>
+        </div>
+    </footer>
+
+    <script>
+        let currentOrders = [];
+        let oldOrders = [];
+        
+        // Simulate an order confirmation (this function will be called when an order is confirmed)
+        function confirmOrder(customerName, items) {
+            const orderId = currentOrders.length + 1; // Simple ID generation
+            const newOrder = {
+                id: orderId,
+                customerName: customerName,
+                items: items,
+                status: "Pending"
+            };
+        
+            currentOrders.push(newOrder);
+            updateOrderTables();
+        }
+        
+        // Update order tables in the admin page
+        function updateOrderTables() {
+            const currentOrdersBody = document.getElementById('current-orders-body');
+            const oldOrdersBody = document.getElementById('old-orders-body');
+            
+            // Clear current orders table
+            currentOrdersBody.innerHTML = '';
+        
+            // Populate current orders
+            currentOrders.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>${order.customerName}</td>
+                    <td>${order.items}</td>
+                    <td>${order.status}</td>
+                    <td>
+                        <button onclick="completeOrder(${order.id})">Confirm Order</button>
+                        <button onclick="deleteOrder(${order.id})">Delete</button>
+                    </td>
+                `;
+                currentOrdersBody.appendChild(row);
+            });
+        
+            // Clear old orders table
+            oldOrdersBody.innerHTML = '';
+        
+            // Populate old orders
+            oldOrders.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>${order.customerName}</td>
+                    <td>${order.items}</td>
+                    <td>${order.status}</td>
+                `;
+                oldOrdersBody.appendChild(row);
+            });
+        }
+        
+        // Complete an order and move it to old orders
+        function completeOrder(orderId) {
+            const orderIndex = currentOrders.findIndex(order => order.id === orderId);
+            if (orderIndex !== -1) {
+                const completedOrder = { ...currentOrders[orderIndex], status: "Completed" };
+                oldOrders.push(completedOrder);
+                currentOrders.splice(orderIndex, 1); // Remove from current orders
+                updateOrderTables();
+                alert(`Order ID ${orderId} has been confirmed.`);
+            }
+        }
+        
+        // Delete an order
+        function deleteOrder(orderId) {
+            const orderIndex = currentOrders.findIndex(order => order.id === orderId);
+            if (orderIndex !== -1) {
+                if (confirm(`Are you sure you want to delete Order ID ${orderId}?`)) {
+                    currentOrders.splice(orderIndex, 1); // Remove from current orders
+                    updateOrderTables();
+                    alert(`Order ID ${orderId} has been deleted.`);
+                }
+            }
+        }
+        
+        // Example usage (this simulates confirming an order)
+        confirmOrder("John Doe", "cheeseburger,pasta primavera");
+    </script>
+</body>
+</html>
